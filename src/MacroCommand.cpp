@@ -44,7 +44,7 @@ void MacroCommand::execute()
                 it->execute();
         }
 
-    commands.clear();
+    //commands.clear();
 
     }
     else

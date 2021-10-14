@@ -11,8 +11,6 @@ public:
       Brick* clay = new ClayBrick();
 
       clay->draw();
-
-      delete(clay);
    }
 
    virtual void undo()
