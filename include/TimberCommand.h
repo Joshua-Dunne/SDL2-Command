@@ -7,12 +7,12 @@
 class TimberCommand : public Command
 {
 public:
-  virtual void execute() { 
-      Brick* timber = new TimberBrick();
-
-      timber->draw();
-
+   virtual ~TimberCommand(){
       delete(timber);
+   }
+
+   virtual void execute() { 
+      timber->draw();
    }
 
    virtual void undo()
@@ -24,6 +24,9 @@ public:
    {
       std::cout << "Re-adding Timber" << std::endl;
    }
+
+private:
+   Brick* timber = new TimberBrick();
 };
 
 #endif

@@ -1,7 +1,7 @@
 BUILD_DIR	:= ./bin
 SRC_DIR		:= ./src
 
-OUTPUT_NAME	:= "firstApp"
+OUTPUT_NAME	:= "main"
 COMP_FILES	:= ${SRC_DIR}/main.cpp ${SRC_DIR}/Game.cpp ${SRC_DIR}/MacroCommand.cpp
 
 INCLUDE		:= "C:\SDL2-2.0.16\i686-w64-mingw32\include\SDL2"

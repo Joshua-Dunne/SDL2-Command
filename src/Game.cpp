@@ -44,6 +44,19 @@ void Game::run()
 
     loadMedia();
 
+    MacroCommand macro;
+
+    macro.add(new LegoCommand());
+    macro.add(new TimberCommand());
+
+    macro.execute();
+
+    macro.undo();
+    macro.execute();
+
+    macro.redo();
+    macro.execute();
+
     m_gameIsRunning = true;
     while (m_gameIsRunning)
     {

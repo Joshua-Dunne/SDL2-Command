@@ -7,12 +7,12 @@
 class LegoCommand : public Command
 {
 public:
-  virtual void execute() { 
-      Brick* lego = new LegoBrick();
-
-      lego->draw();
-
+   virtual ~LegoCommand(){
       delete(lego);
+   }
+
+   virtual void execute() { 
+      lego->draw();
    }
 
    virtual void undo()
@@ -24,6 +24,9 @@ public:
    {
       std::cout << "Re-adding Lego" << std::endl;
    }
+
+private:
+   Brick* lego = new LegoBrick();
 };
 
 #endif

@@ -7,12 +7,12 @@
 class ConcreteCommand : public Command
 {
 public:
-  virtual void execute() { 
-      Brick* concrete = new ConcreteBrick();
-
-      concrete->draw();
-
+   virtual ~ConcreteCommand(){
       delete(concrete);
+   }
+
+   virtual void execute() { 
+      concrete->draw();
    }
 
    virtual void undo()
@@ -24,6 +24,9 @@ public:
    {
       std::cout << "Re-adding Concrete" << std::endl;
    }
+
+private:
+   Brick* concrete = new ConcreteBrick();
 };
 
 #endif

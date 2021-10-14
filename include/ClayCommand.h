@@ -7,10 +7,12 @@
 class ClayCommand : public Command
 {
 public:
-  virtual void execute() { 
-      Brick* clay = new ClayBrick();
+   virtual ~ClayCommand(){
+      delete(clay);
+   }
 
-      clay->draw();
+   virtual void execute() { 
+            clay->draw();
    }
 
    virtual void undo()
@@ -22,6 +24,9 @@ public:
    {
       std::cout << "Re-adding Clay" << std::endl;
    }
+
+private:
+   Brick* clay = new ClayBrick();;
 };
 
 #endif

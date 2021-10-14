@@ -12,8 +12,20 @@ MacroCommand::~MacroCommand()
 
 void MacroCommand::add(Command* c)
 {
-    commands.push_back(c);
-    spaceAt++;
+    if(spaceAt > 0)
+    {
+        auto pos = commands.begin() + spaceAt;
+        commands.insert(pos, c);
+        spaceAt++;
+        updateNumber(c, 1);
+    }
+    else
+    {
+        // if 0 commands exist, just push it onto the vector
+        commands.push_back(c);
+        spaceAt++;
+        updateNumber(c, 1);
+    }    
 }
 
 void MacroCommand::remove(Command* c)
@@ -25,10 +37,11 @@ void MacroCommand::remove(Command* c)
             if (*it == c)
             {
                 commands.erase(it);
+                
                 break;
             }
         }
-
+    updateNumber(c, -1);
     spaceAt--;
     }
 
@@ -40,12 +53,14 @@ void MacroCommand::execute()
     {
         for(auto it : commands)
         {
+            if(it == *(commands.begin() + spaceAt))
+            {
+                break;
+            }
+
             if(it != NULL)
                 it->execute();
         }
-
-    //commands.clear();
-
     }
     else
     {
@@ -58,11 +73,12 @@ void MacroCommand::undo()
 {
     if(spaceAt > 0)
     {
-        Command* com = *commands.end();
+        Command* com = *(commands.begin() + (spaceAt - 1));
 
         com->undo();
 
         spaceAt--; // go back 1 space
+        updateNumber(com, -1);
     }
     
 }
@@ -73,8 +89,35 @@ void MacroCommand::redo()
     {
         spaceAt++;
 
-        Command* com = commands.at(spaceAt);
+        Command* com = commands.at(spaceAt - 1);
 
         com->redo();
+
+        updateNumber(com, 1);
     }  
+}
+
+void MacroCommand::updateNumber(Command* c, int change)
+{
+    std::string name = typeid(*c).name();
+    std::cout << name << std::endl;
+
+    if(name == "11LegoCommand")
+    {
+        lego += change;
+    }
+    else if (name == "13TimberCommand")
+    {
+        timber += change;
+    }
+    else if (name == "11ClayCommand")
+    {
+        clay += change;
+    }
+    else if (name == "15ConcreteCommand")
+    {
+        concrete += change;
+    }
+
+    std::cout << "Lego: [" << lego << "], Timber: [" << timber << "], Clay: [" << clay << "], Concrete: [" << concrete << "]" << std::endl;
 }
