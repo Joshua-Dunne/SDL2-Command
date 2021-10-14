@@ -14,6 +14,16 @@ public:
 
       delete(clay);
    }
+
+   virtual void undo()
+   {
+      std::cout << "Removing Clay" << std::endl;
+   }
+
+   virtual void redo()
+   {
+      std::cout << "Re-adding Clay" << std::endl;
+   }
 };
 
 #endif

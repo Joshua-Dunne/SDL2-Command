@@ -14,6 +14,16 @@ public:
 
       delete(lego);
    }
+
+   virtual void undo()
+   {
+      std::cout << "Removing Lego" << std::endl;
+   }
+
+   virtual void redo()
+   {
+      std::cout << "Re-adding Lego" << std::endl;
+   }
 };
 
 #endif
