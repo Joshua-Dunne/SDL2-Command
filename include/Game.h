@@ -1,6 +1,11 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <string>
+#include "MacroCommand.h"
+#include "LegoCommand.h"
+#include "ClayCommand.h"
+#include "ConcreteCommand.h"
+#include "TimberCommand.h"
 
 class Game
 {
@@ -40,5 +45,7 @@ private:
 
     //The image we will load and show on the screen
     SDL_Surface* gHelloWorld = NULL;
+
+    MacroCommand macro;
 
 };

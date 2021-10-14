@@ -13,6 +13,13 @@ Game::Game() :
         //Create window
         window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
     }
+
+    macro.add(new TimberCommand());
+    macro.add(new LegoCommand());
+
+    macro.execute();
+
+    std::cin.get();
 }
 
 Game::~Game()
