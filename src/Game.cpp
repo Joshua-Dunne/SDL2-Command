@@ -51,11 +51,24 @@ void Game::run()
 
     macro.execute();
 
+    std::cin.get();
+
     macro.undo();
     macro.execute();
 
+    std::cin.get();
+
+    macro.add(new LegoCommand());
+    macro.add(new TimberCommand());
+
+    macro.execute();
+
+    std::cin.get();
+
     macro.redo();
     macro.execute();
+
+    std::cin.get();
 
     m_gameIsRunning = true;
     while (m_gameIsRunning)

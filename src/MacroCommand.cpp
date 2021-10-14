@@ -100,7 +100,6 @@ void MacroCommand::redo()
 void MacroCommand::updateNumber(Command* c, int change)
 {
     std::string name = typeid(*c).name();
-    std::cout << name << std::endl;
 
     if(name == "11LegoCommand")
     {
