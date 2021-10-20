@@ -86,7 +86,6 @@ SDL_Texture* Game::loadFromFile(std::string path, SDL_Texture* tex, TextureData&
     }
     else
     {
-        std::cout << "loadedSurface set :)" << std::endl;
         //Color key image
         SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0, 0xFF, 0xFF));
 
@@ -100,7 +99,6 @@ SDL_Texture* Game::loadFromFile(std::string path, SDL_Texture* tex, TextureData&
         }
         else
         {
-            std::cout << "tex loaded :)" << std::endl;
             //Get image dimensions
             data.width = loadedSurface->w;
             data.height = loadedSurface->h;
